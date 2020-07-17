@@ -12,21 +12,24 @@ namespace Calculating_the_mean
             Console.WriteLine("Чтобы остановить введение чисел введите \"0\"");
             Console.WriteLine("***ВАЖНО, вводите каждое число через enter***");
             int[] nums = new int[10];
+
             //------> Цикл получение чисел.
             nums = GetUserNumbers(nums);
+
             //------> Вычесление среднего значения чисел.
             float meanNum = CalculatingMean(nums);
 
             Console.WriteLine($"Среднее число: {meanNum}");
 
         }
+
         /* =================================================================
          *          Получить Числа Пользователя
          * =================================================================
          * GetUserNumbers
          * 
          * В цикле запрашивает у пользователя 10 чисел, 
-         *  в случае введения 0. цикл прерывается.
+         *  в случае введения 0, цикл завершается.
          *  
          *  Использует переменные:
          *          nums - пустой массив.
@@ -41,6 +44,7 @@ namespace Calculating_the_mean
             }
             return nums;
         }
+
         /* =================================================================
          *          Вычислить среднее число
          * =================================================================
@@ -48,7 +52,7 @@ namespace Calculating_the_mean
          * 
          * Вычисляет среднее значение чисел, по формуле ДЗ
          *   (сумма всех чисел суммируется, затем делится на колличество 
-         *   чисел в массиве).
+         *   чисел в массиве. 0 не учитывает как число).
          *  
          *  Использует переменные:
          *          nums - массив чисел, введенный пользователем.
@@ -56,17 +60,16 @@ namespace Calculating_the_mean
         static float CalculatingMean(int [] nums )
         {
             int totalNum = 0;
-            int cntArray = 0;
+            int cntNums = 0;
             foreach (int num in nums)
             {
                 if (num > 0)
                 {
                     totalNum += num;
-                    cntArray++;
+                    cntNums++;
                 }
-                
             }
-            float result = (float)totalNum / cntArray;
+            float result = (float)totalNum / cntNums;
 
             return result;
         }
